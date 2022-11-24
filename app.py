@@ -1,8 +1,10 @@
 from flask import Flask, abort, request
 from model import findKeywords
+from flask_cors import CORS
 import json
 
 app =  Flask(__name__)
+cors = CORS(app)
 
 @app.route("/")
 def home():
