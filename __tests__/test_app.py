@@ -1,4 +1,3 @@
-
 import json
 from app import app
 
@@ -37,3 +36,27 @@ def test_model_route():
     assert response.status_code == 200
 
 # endpoint error handling testing:
+
+def test_404_not_found():
+    response = app.test_client().get("/doesnotexist")
+    res = response.data.decode("utf-8")
+
+    assert type(res) is str
+    assert "<h1>Not Found</h1>" in res
+    assert response.status_code == 404
+
+def test_400_missing_required_fields():
+    response = app.test_client().post("/model", json={"positive": ["heart"]})
+    res = response.data.decode("utf-8")
+
+    assert type(res) is str
+    assert "<h1>Bad Request</h1>" in res
+    assert response.status_code == 400
+
+def test_400_keyword_not_in_data():
+    response = app.test_client().post("/model", json={"positive": ["heartgfgfd"], "negative": ["red"]})
+    res = response.data.decode("utf-8")
+
+    assert type(res) is str
+    assert "<h1>Bad Request</h1>" in res
+    assert response.status_code == 400
