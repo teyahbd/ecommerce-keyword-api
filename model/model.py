@@ -1,7 +1,7 @@
 from gensim.models import KeyedVectors
 import os
 
-data_path = os.path.dirname(os.path.abspath(__file__)) + "/new_ecommerce_vecs.txt"
+data_path = os.path.dirname(os.path.abspath(__file__)) + "/ecommerce_vecs.txt"
 
 model = KeyedVectors.load_word2vec_format(data_path, binary=False) 
 
