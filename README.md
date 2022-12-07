@@ -21,6 +21,7 @@
     <a href="#about-this-repo">About This Repo</a><br>
     <a href="#built-with">Built With</a><br>
     <a href="#getting-started">Getting Started</a><br>
+    <a href="#testing">Testing</a><br>
     <a href="#credits">Credits</a><br>
   </div>
 </details>
@@ -65,9 +66,21 @@ As mentioned, there are two uses for this repo - hosting a Word2Vec keyword API 
 
 <p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
 
-# Usage
+# API Usage
 
 This section refers to usage of the Flask keyword recommendation API once it has been hosted.
+
+WARNING this is our model basic. If you wish to create a more general but broad keyword. see our previous repo which contains an identical API but instead uses the wikipe https://github.com/teyahbd/wiki-keyword-api.
+
+<p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
+
+## Testing
+
+Our Word2Vec function, API endpoints and their respective error handling is all testing using `pytest` and our test files can be found within the `__tests__` folder. To run these tests for yourself, navigate into this folder (after following the API installation procedure above) and run:
+
+`python3 -m pytest`
+
+This command can be followed by either file name (`test_app.py` or `test_model.py`) to run the tests from each file separately.
 
 <p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
 
@@ -93,6 +106,7 @@ To train a set of custom eCommerce word vectors, we have used an online retail d
 The following resources were particularly helpful in creating this project:
 
 - [Building a Recommendation System using Word2Vec](https://www.analyticsvidhya.com/blog/2019/07/how-to-build-recommendation-system-word2vec-python/)
+- [Deploying a Python Flask Example Application Using Heroku](https://realpython.com/flask-by-example-part-1-project-setup/)
 - [Best README Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
