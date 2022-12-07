@@ -17,18 +17,17 @@
 
   <details>
   <summary>Table of Contents</summary>
-  <ul style="list-style: none; padding: 0;">
-    <li><a href="#about-this-repo">About This Repo</a></li>
-    <li><a href="#built-with">Built With</a></li>
-    <li>
+  <ul style="padding: 0;">
+    <li style="list-style: none;"><a href="#about-this-repo">About This Repo</a></li>
+    <li style="list-style: none;"><a href="#built-with">Built With</a></li>
+    <li style="list-style: none;"> 
       <a href="#getting-started">Getting Started</a>
       <!-- <ul style="list-style: none; padding: 0;">
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul> -->
     </li>
-    <li><a href="#credits">Credits</a></li>
-    <li><a href="#licence">Licence</a></li>
+    <li style="list-style: none;"><a href="#credits">Credits</a></li>
   </ul>
 </details>
 </div>
