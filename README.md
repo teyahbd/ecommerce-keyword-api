@@ -17,18 +17,12 @@
 
   <details>
   <summary>Table of Contents</summary>
-  <ul style="padding: 0;">
-    <li style="list-style: none;"><a href="#about-this-repo">About This Repo</a></li>
-    <li style="list-style: none;"><a href="#built-with">Built With</a></li>
-    <li style="list-style: none;"> 
-      <a href="#getting-started">Getting Started</a>
-      <!-- <ul style="list-style: none; padding: 0;">
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul> -->
-    </li>
-    <li style="list-style: none;"><a href="#credits">Credits</a></li>
-  </ul>
+  <div>
+    <a href="#about-this-repo">About This Repo</a><br>
+    <a href="#built-with">Built With</a><br>
+    <a href="#getting-started">Getting Started</a><br>
+    <a href="#credits">Credits</a><br>
+  </div>
 </details>
 </div>
 
@@ -69,6 +63,8 @@ As mentioned, there are two uses for this repo - hosting a Word2Vec keyword API 
 
 ### Installation
 
+<p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
+
 # Usage
 
 This section refers to usage of the Flask keyword recommendation API once it has been hosted.
@@ -98,3 +94,5 @@ The following resources were particularly helpful in creating this project:
 
 - [Building a Recommendation System using Word2Vec](https://www.analyticsvidhya.com/blog/2019/07/how-to-build-recommendation-system-word2vec-python/)
 - [Best README Template](https://github.com/othneildrew/Best-README-Template)
+
+<p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
