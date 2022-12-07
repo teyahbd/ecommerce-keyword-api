@@ -29,12 +29,6 @@ def test_returns_list_of_correctly_formatted_tuples():
         assert type(i[0]) is str
         assert type(i[1]) is float
 
-def test_returns_correct_result():
-    liked_keywords = ["heart"]
-    disliked_keywords = ["red"]
-    expected_result = [('recycled', 0.39151617884635925), ('star', 0.37562987208366394)]
-    assert find_keywords(liked_keywords, disliked_keywords) == expected_result
-
 # find_keywords() error handling testing:
 
 def test_raises_error_all_missing_args():
