@@ -31,7 +31,7 @@
 
 # About This Repo
 
-This API forms part of a group project completed on the Northcoders software development bootcamp. Santa's Little Helper is an app created in React Native which uses a Word2Vec machine learning model to help users find an ideal present.
+This API forms part of a group project completed on the Northcoders software development bootcamp. Santa's Little Helper is an app created in React Native which uses a Word2Vec machine learning model to help users find an ideal present for a loved one.
 
 ## Project Overview
 
@@ -218,7 +218,7 @@ If you wish to try this out for yourself, there are two stages to our process:
 
 ## 1. Cleaning the dataset
 
-Follow the detailed instructions found in the jupyter notebook `/model_training/clean_data.ipynb`. We have also included a basic Python script, so you can complete the steps found in the notebook in one go using the command
+To get started, follow the [walk-through](https://github.com/teyahbd/ecommerce-keyword-api/blob/main/model_training/clean_data.ipynb) found in the first jupyter notebook `/model_training/clean_data.ipynb`. We have also included a basic Python script, so you can complete the steps found in the notebook in one go using the command
 
 ```
 python3 clean_data.py
@@ -233,7 +233,7 @@ within the `/model_training` directory.
 
 ## 2. Training the word vectors
 
-You should have generated a file called `cleaned_dataset.txt` inside the `/model_training` folder which contains the data in an appropriate format for training. Follow the detailed instructions in the second jupyter notebook `/model_training/train_model.ipynb` to train the word vectors using this data. Again, we've included a basic Python script for this so you can complete these steps in one go using the command:
+You should have generated a file called `cleaned_dataset.txt` inside the `/model_training` folder which contains the data in an appropriate format for training. Follow the [walk-through](https://github.com/teyahbd/ecommerce-keyword-api/blob/main/model_training/train_model.ipynb) in the second jupyter notebook `/model_training/train_model.ipynb` to train the word vectors using this data. Again, we've included a basic Python script for this so you can complete these steps in one go using the command:
 
 ```
 python3 train_model.py
