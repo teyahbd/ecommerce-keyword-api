@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://northcoders.com/projects/nov-2022/santas-little-helper">
-    <img src="images/logo.png" alt="Santa's Little Helper Logo">
+    <img src="images/logo.png" alt="Santa's Little Helper Logo" width="200">
   </a>
 
   <p align="center">
@@ -31,23 +31,24 @@
 
 # About This Repo
 
-This API forms part of a group project completed on the Northcoders software development bootcamp. Santa's Little Helper is an app created in React Native which uses a Word2Vec machine learning model to help users find an ideal present. Please find the main app repo here for further details and our project page with an app demo can be found here.
+This API forms part of a group project completed on the Northcoders software development bootcamp. Santa's Little Helper is an app created in React Native which uses a Word2Vec machine learning model to help users find an ideal present.
 
-Link to currently hosted page
+## Project Overview
 
-wuickly explain project flow here
+As a brief overview of the project flow, a user swipes to like or dislike gifts for an intended recipient accessed via the eBay API. We extract keywords describing each item and record whether each keyword describes an item the user liked or instead that they disliked. From this, we create a list of "positive", or liked, keywords and a list of "negative", or disliked, keywords. These lists are passed to the API in this repo, which holds our Word2Vec neural network model.
 
-This is a small server that contains within it a python script to output semantically similar words when given one or more words as input. The post request accepts inputs in the following way:
-{ [ postive ], [ negative ] } where both positive and negative should be arrays of strings.
+Based on these lists, this API returns a list of related keywords that the intended recipient may like. These keywords are then used in the next eBay API call to suggest items that the intended recipient is more likely to be interested in - essentially tailoring the items to the users likes and dislikes. Please see the (main repo)[https://github.com/robcarter123/react-final-project] for further details and our [project page](https://northcoders.com/projects/nov-2022/santas-little-helper) which contains an app demo.
 
-Word2vec is a technique for natural language processing published in 2013. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence. We used the suggested similar words to feedback keywords relating to gifts to the frontend of our project.
+## This Repo
 
-There are two uses for this repo:
+The main purpose of this repo is to hold our Flask API, which creates a small Python-based server which outputs semantically similar words when given one or more words as input. We achieved this using Word2Vec - a technique for natural language processing published in 2013. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence. We used our model to suggest similar words to given keywords relating to gifts in the front end of our project.
+
+While pre-trained models exist, we chose to train our own custom set of word vectors specific to the eCommerce context of our project. We've included our code from this process and therefore, there are two uses for this repo:
 
 1. Creating a Flask REST API which uses machine learning and NLP to recommend related keywords
-2. Training custom word vectors with Word2Vec using an eCommerce dataset (see the folder `/model_training`)
+2. Training custom word vectors with Word2Vec using an eCommerce dataset (see the folder `/model_training` and <a href="#training-custom-word-vectors-using-word2vec">this section</a> of the repo.
 
-For our app, we trained these custom word vectors first to then use in the model of our API. We've included the files for training word vectors in this repo for convenience however, this process is separate to creating the API. See the "Getting Started" section for more details on using each part of this repo.
+At the time of writing, this API is hosted [here](https://ecommerce-keyword-api.herokuapp.com/).
 
 <p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
 
