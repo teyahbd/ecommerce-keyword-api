@@ -195,7 +195,9 @@ The response object will have a key of `keywords`. The list returned will contai
 
 Our Word2Vec function, API endpoints and their respective error handling is tested using `pytest` and our test files can be found within the `__tests__` folder. To run these tests for yourself, navigate into this folder (after following the API installation procedure) and run:
 
-`python3 -m pytest`
+```
+python3 -m pytest
+```
 
 This command can be followed by either file name (`test_app.py` or `test_model.py`) to run the tests from each file separately.
 
