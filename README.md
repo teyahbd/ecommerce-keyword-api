@@ -31,17 +31,22 @@
 # About This Repo
 
 This API forms part of a group project completed on the Northcoders software development bootcamp. Santa's Little Helper is an app created in React Native which uses a Word2Vec machine learning model to help users find an ideal present. Please find the main app repo here for further details and our project page with an app demo can be found here.
-natural language processing
-This repo contains two sections:
-
-1. Keyword api
-2. Custom word vector training
 
 Link to currently hosted page
 
-REST api?
-
 wuickly explain project flow here
+
+This is a small server that contains within it a python script to output semantically similar words when given one or more words as input. The post request accepts inputs in the following way:
+{ [ postive ], [ negative ] } where both positive and negative should be arrays of strings.
+
+Word2vec is a technique for natural language processing published in 2013. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence. We used the suggested similar words to feedback keywords relating to gifts to the frontend of our project.
+
+There are two uses for this repo:
+
+1. Creating a Flask REST API which uses machine learning and NLP to recommend related keywords
+2. Training custom word vectors with Word2Vec using an eCommerce dataset (see the folder `/model_training`)
+
+For our app, we trained these custom word vectors first to then use in the model of our API. We've included the files for training word vectors in this repo for convenience however, this process is separate to creating the API. See the "Getting Started" section for more details on using each part of this repo.
 
 <p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
 
@@ -62,35 +67,53 @@ Details on development of the React Native app can be found in the [main app rep
 
 # Getting Started
 
-As mentioned, there are two uses for this repo - hosting a Word2Vec keyword API and training a custom set of word vectors. If you only wish to host the API, it is not necessary to train a custom model as our pre-trained word vectors are already included in this repo (`/model/ecommerce_vecs.txt`). If that's the case, <a href="#hosting-the-keyword-recommendation-api">skip to the second part</a> of this section.
+As mentioned, there are two uses for this repo - running an API and training a custom set of word vectors. If you only wish to set up the API, follow the installation instructions below. For details on our word vector training process, see this <a href="#training-custom-word-vectors-using-word2vec">later section</a>. However, it is not necessary to train the word vectors to run the API as our pre-trained vectors are included in this repo (`/model/ecommerce_vecs.txt`).
 
-## Training Custom Word Vectors using Word2Vec
+## Installation
 
-### Prerequisites
+You can get started using a local version of our API by following these steps:
 
-Additionally, it is unnecessary to host the API with these training files and large dataset.
+### 1. Clone this repo
 
-### Installation
-
-To clean and train your data, you can either follow the steps outlined in the jupyter notebooks and run them, or we have included a data cleaning script `/model_training/clean_data.py` which can be run using
+You can clone this repo locally using the command:
 
 ```
-python3 clean_data.py
+git clone https://github.com/teyahbd/ecommerce-keyword-api.git
 ```
 
-and we have included a model training script `/model_training/train_model.py` which can be run using
+### 2. Set up a virtual environment
+
+Before installing the required packages, it is convention in Python to create a local virtual environment to install these packages within. To do this, navigate into the main directory of this project and run:
 
 ```
-python3 train_data.py
+python3 -m venv venv
 ```
 
-It is recommended to follow the jupyter notebooks if you are unsure, as they take you through the process step-by-step. Once you have cleaned the data and trained the model, you should have a file `/model_training/ecommerce_vecs.txt`. If you wish to use this file in the next step of your API, replace the preexisting file `/model/ecommerce_vecs.txt`.
+To enter the virtual environment, both now and at later points, you can use the command:
 
-## Hosting the Keyword Recommendation API
+```
+source venv/bin/activate
+```
 
-### Prerequisites
+The name of the virtual environment (venv) should appear on your command line to indicate you are currently working within the virtual environment. In order to have access to the packages we will install in the next step, it's important to check you are within the environment when working with this repo.
 
-### Installation
+### 3. Install required packages
+
+After ensuring you are within the virtual environment, use the `requirements.txt` file to install the requirements for this project via `pip` with the command:
+
+```
+pip install -r requirements.txt
+```
+
+### 4. Launch Flask app locally
+
+To run the Flask app on your local server, you can use the command:
+
+```
+flask run
+```
+
+Note: Flask will default to using port 5000.
 
 <p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
 
@@ -168,13 +191,60 @@ The response object will have a key of `keywords`. The list returned will contai
 
 # Testing
 
-Our Word2Vec function, API endpoints and their respective error handling is tested using `pytest` and our test files can be found within the `__tests__` folder. To run these tests for yourself, navigate into this folder (after following the API installation procedure above) and run:
+Our Word2Vec function, API endpoints and their respective error handling is tested using `pytest` and our test files can be found within the `__tests__` folder. To run these tests for yourself, navigate into this folder (after following the API installation procedure) and run:
 
 `python3 -m pytest`
 
 This command can be followed by either file name (`test_app.py` or `test_model.py`) to run the tests from each file separately.
 
 <p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
+
+# Training Custom Word Vectors using Word2Vec
+
+We've included all of our training files for training word vectors based on an eCommerce-specific dataset in the folder `/model_training`. The two Jupyter Notebooks in particular provide a useful explanation of our process. The resulting word vectors can be found in our API in the `/model` folder and are used in `model.py`.
+
+If you wish to try this out for yourself, there are two stages to our process:
+
+1. Preparing and cleaning the dataset
+2. Training the word vectors using Word2Vec
+
+## Prerequisites
+
+- Follow steps 1-3 in the <a href="#getting-started">Getting Started</a> section
+  - Note: You may wish to set up a separate directory and virtual environment for training the dataset. In this case, copy the folder (`/model_training`) into the new directory alongside the `requirements.txt` file and follow the Getting Started steps from there.
+- Ensure you have downloaded the UCI Online Retail dataset found [here](https://archive.ics.uci.edu/ml/machine-learning-databases/00352/) and placed the `.xlsx` file within the `/model_training` folder.
+
+## 1. Cleaning the dataset
+
+Follow the detailed instructions found in the jupyter notebook `/model_training/clean_data.ipynb`. We have also included a basic Python script, so you can complete the steps found in the notebook in one go using the command
+
+```
+python3 clean_data.py
+```
+
+within the `/model_training` directory.
+
+### Notes
+
+- Expect to wait up to a few minutes when running scripts or commands in this section due to the size of the dataset.
+- Check the downloaded dataset has the same file name as used in the script (`Online_Retail.txt`).
+
+## 2. Training the word vectors
+
+You should have generated a file called `cleaned_dataset.txt` inside the `/model_training` folder which contains the data in an appropriate format for training. Follow the detailed instructions in the second jupyter notebook `/model_training/train_model.ipynb` to train the word vectors using this data. Again, we've included a basic Python script for this so you can complete these steps in one go using the command:
+
+```
+python3 train_model.py
+```
+
+within the `/model_training` directory.
+
+You should have now generated your own version of our word vector file inside `/model_training` called `ecommerce_vecs.txt`.
+
+### Notes
+
+- While the first step of cleaning the data is specific to our dataset, the second file for training word vectors should work for any corpus formatted similarly to `cleaned_dataset.txt` (i.e. a text file containing a list of sentences to train).
+- If you wish to use this file for your API, replace our default file in the `/model` folder.
 
 # Credits
 

@@ -1,3 +1,5 @@
 venv
 __pycache__
 Online_Retail.xlsx
+cleaned_dataset.txt
+/model_training/ecommerce_vecs.txt
