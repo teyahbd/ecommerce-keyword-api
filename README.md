@@ -37,7 +37,7 @@ This API forms part of a group project completed on the Northcoders software dev
 
 As a brief overview of the project flow, a user swipes to like or dislike gifts for an intended recipient accessed via the eBay API. We extract keywords describing each item and record whether each keyword describes an item the user liked or instead that they disliked. From this, we create a list of "positive", or liked, keywords and a list of "negative", or disliked, keywords. These lists are passed to the API in this repo, which holds our Word2Vec neural network model.
 
-Based on these lists, this API returns a list of related keywords that the intended recipient may like. These keywords are then used in the next eBay API call to suggest items that the intended recipient is more likely to be interested in - essentially tailoring the items to the users likes and dislikes. Please see the (main repo)[https://github.com/robcarter123/react-final-project] for further details and our [project page](https://northcoders.com/projects/nov-2022/santas-little-helper) which contains an app demo.
+Based on these lists, this API returns a list of related keywords that the intended recipient may like. These keywords are then used in the next eBay API call to suggest items that the intended recipient is more likely to be interested in - essentially tailoring the items to the users likes and dislikes. Please see the [main repo](https://github.com/robcarter123/react-final-project) for further details and our [project page](https://northcoders.com/projects/nov-2022/santas-little-helper) which contains an app demo.
 
 ## This Repo
 
@@ -50,7 +50,7 @@ While pre-trained models exist, we chose to train our own custom set of word vec
 
 At the time of writing, this API is hosted [here](https://ecommerce-keyword-api.herokuapp.com/).
 
-<p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
+<p align="right">(<a href="#word2vec-keyword-recommendation-api">back to top</a>)</p>
 
 # Built With
 
@@ -65,7 +65,7 @@ We have used Python to both train our word vectors and create this API. Key tech
 
 Details on development of the React Native app can be found in the [main app repo](https://github.com/robcarter123/react-final-project).
 
-<p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
+<p align="right">(<a href="#word2vec-keyword-recommendation-api">back to top</a>)</p>
 
 # Getting Started
 
@@ -117,7 +117,7 @@ flask run
 
 Note: Flask will default to using port 5000.
 
-<p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
+<p align="right">(<a href="#word2vec-keyword-recommendation-api">back to top</a>)</p>
 
 # API Usage
 
@@ -189,7 +189,7 @@ The response object will have a key of `keywords`. The list returned will contai
   - It is recommended to check which words are accepted by our API before use. If any word on either list is not accepted, currently our API will return a 400 Bad Request error.
   - If you wish to see an example using a much larger (but less relevant) word list, see our [previous repo](https://github.com/teyahbd/wiki-keyword-api) which contains an identical API but instead uses pretrained Wikipedia word vectors from GLoVe.
 
-<p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
+<p align="right">(<a href="#word2vec-keyword-recommendation-api">back to top</a>)</p>
 
 # Testing
 
@@ -199,7 +199,7 @@ Our Word2Vec function, API endpoints and their respective error handling is test
 
 This command can be followed by either file name (`test_app.py` or `test_model.py`) to run the tests from each file separately.
 
-<p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
+<p align="right">(<a href="#word2vec-keyword-recommendation-api">back to top</a>)</p>
 
 # Training Custom Word Vectors using Word2Vec
 
@@ -248,7 +248,7 @@ You should have now generated your own version of our word vector file inside `/
 - While the first step of cleaning the data is specific to our dataset, the second file for training word vectors should work for any corpus formatted similarly to `cleaned_dataset.txt` (i.e. a text file containing a list of sentences to train).
 - If you wish to use this new file for your API, replace our default file in the `/model` folder.
 
-<p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
+<p align="right">(<a href="#word2vec-keyword-recommendation-api">back to top</a>)</p>
 
 # Credits
 
@@ -275,4 +275,4 @@ The following resources were particularly helpful in creating this project:
 - [Deploying a Python Flask Example Application Using Heroku](https://realpython.com/flask-by-example-part-1-project-setup/)
 - [Best README Template](https://github.com/othneildrew/Best-README-Template)
 
-<p align="right">(<a href="#word2vec-keyword-api">back to top</a>)</p>
+<p align="right">(<a href="#word2vec-keyword-recommendation-api">back to top</a>)</p>
